@@ -1,0 +1,24 @@
+name: Run QA Playwright
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          npm install
+          npx playwright install --with-deps
+
+      - name: Run Table Sum QA - 23f2000738@ds.study.iitm.ac.in
+        run: node sum_tables.js
