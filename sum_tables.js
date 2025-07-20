@@ -1,8 +1,8 @@
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
 
 const seeds = Array.from({ length: 10 }, (_, i) => 27 + i);
 
-(async () => {
+const main = async () => {
     const browser = await chromium.launch();
     const page = await browser.newPage();
 
@@ -21,4 +21,6 @@ const seeds = Array.from({ length: 10 }, (_, i) => 27 + i);
 
     console.log(`TOTAL SUM: ${totalSum}`);
     await browser.close();
-})();
+};
+
+main();
